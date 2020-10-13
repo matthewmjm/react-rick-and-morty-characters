@@ -1,19 +1,27 @@
 import React from 'react';
+import Card from './Card';
 
 function Favorites(props) {
+    const displayFavorites = () => {
+        return props.favorites.map(character => {
+            return (
+                <Card 
+                    key={character.id} 
+                    character={character}  
+                />
+            )
+        })
+    }
     return (
         <>
-            <div className="favorites">
+            <section className="favorites">
                 <ul>
-                    <p>THE FAVORITES</p>
+                    {displayFavorites()}
                 </ul>
-            </div>
+            </section>
         </>
     );
     
 }
-
-
-
 
 export default Favorites;

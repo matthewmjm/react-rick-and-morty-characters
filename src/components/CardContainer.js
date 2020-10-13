@@ -14,6 +14,7 @@ function CardContainer({ characters, addToFavorites }) {
             )
         })
     }
+    
     return (
         <React.Fragment>
             <div className="card-container">

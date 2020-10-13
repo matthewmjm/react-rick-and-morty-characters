@@ -29,7 +29,7 @@ class App extends React.Component {
     return (
       <>
         <div className="App">
-          <Favorites />
+          <Favorites favorites={this.state.favorites}/>
           <h1>Rick and Morty Characters</h1>
           <MainContainer 
             characters={this.state.characters} 
