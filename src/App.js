@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MainContainer from './components/MainContainer';
+import Favorites from './components/Favorites';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const ramcURL = 'https://rickandmortyapi.com/api/character/'
+
+
+class App extends React.Component {
+
+  state = {
+    characters: []
+  }
+
+  componentDidMount(){
+    fetch(ramcURL)
+      .then(response => response.json())
+      .then(({results}) => this.setState({characters: results}))
+  }
+
+
+
+  render() {
+    return (
+      <>
+        <div className="App">
+          <h1>Rick and Morty Characters</h1>
+          <Favorites />
+          <MainContainer characters={this.state.characters} /> 
+        </div>
+      </>
+    )
+  }
 }
 
 export default App;
