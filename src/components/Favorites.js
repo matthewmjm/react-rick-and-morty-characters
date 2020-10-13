@@ -7,7 +7,8 @@ function Favorites(props) {
             return (
                 <Card 
                     key={character.id} 
-                    character={character}  
+                    character={character} 
+                    removeFavorite={props.removeFavorite} 
                 />
             )
         })

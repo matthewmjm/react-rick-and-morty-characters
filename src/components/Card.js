@@ -1,9 +1,14 @@
 import React from 'react';
 
-function Card({ character, addToFavorites }) {
+function Card({ character, addToFavorites, removeFavorite }) {
 
     function handleClick() {
-        addToFavorites(character)
+        if(addToFavorites) {
+            addToFavorites(character)
+        }
+        else{
+            removeFavorite(character)
+        }
     }
 
     return (
@@ -19,4 +24,4 @@ function Card({ character, addToFavorites }) {
     );
 }
 
-export default Card;  
+export default Card;   

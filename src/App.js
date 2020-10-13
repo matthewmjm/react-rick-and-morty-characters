@@ -25,13 +25,21 @@ class App extends React.Component {
     }
   }
 
+  removeFavorite = (character) => {
+    let newFavorites = this.state.favorites.filter(fav => fav !== character)
+    this.setState({favorites: newFavorites})
+  }
+
 
 
   render() { 
     return (
       <>
         <div className="App">
-          <Favorites favorites={this.state.favorites}/>
+          <Favorites 
+            favorites={this.state.favorites} 
+            removeFavorite={this.removeFavorite} 
+          />
           <h1>Rick and Morty Characters</h1>
           <MainContainer 
             characters={this.state.characters} 
