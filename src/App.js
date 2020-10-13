@@ -9,7 +9,8 @@ const ramcURL = 'https://rickandmortyapi.com/api/character/'
 class App extends React.Component {
 
   state = {
-    characters: []
+    characters: [],
+    favorites: []
   }
 
   componentDidMount(){
@@ -18,15 +19,22 @@ class App extends React.Component {
       .then(({results}) => this.setState({characters: results}))
   }
 
+  addToFavorites = (character) => {
+    this.setState({favorites: [...this.state.favorites, character]})
+  }
+
 
 
   render() {
     return (
       <>
         <div className="App">
-          <h1>Rick and Morty Characters</h1>
           <Favorites />
-          <MainContainer characters={this.state.characters} /> 
+          <h1>Rick and Morty Characters</h1>
+          <MainContainer 
+            characters={this.state.characters} 
+            addToFavorites={this.addToFavorites} 
+          /> 
         </div>
       </>
     )
