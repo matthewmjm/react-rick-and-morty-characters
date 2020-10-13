@@ -20,12 +20,14 @@ class App extends React.Component {
   }
 
   addToFavorites = (character) => {
-    this.setState({favorites: [...this.state.favorites, character]})
+    if(!this.state.favorites.find(charac => charac.id === character.id)) {
+      this.setState({favorites: [...this.state.favorites, character]})
+    }
   }
 
 
 
-  render() {
+  render() { 
     return (
       <>
         <div className="App">
